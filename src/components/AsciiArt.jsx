@@ -2,7 +2,8 @@ import React from 'react'
 
 function AsciiArt() {
   return (
-    <div className='w-1/4 h-1/4 text-white overflow-hidden p-2 flex justify-center items-center text-[0.5rem] leading-tight whitespace-pre-wrap'>
+    <div className=''>
+      <div className='w-1/4 h-1/4 text-white overflow-hidden p-2 flex justify-center items-center text-[0.5rem] leading-tight whitespace-pre-wrap'>
         ⠀⠀⠀⠀⢀⠀⠀⠀⠀⠄⡀⠀⠀⠀⡀⠀⠀⠀⠀⠀⠀⢀⠠⢀⠄⠂⠄⡠⠐⠐⠤⡐⠄⡑⠌⡲⡐⢆⡡⣉⠁⠘⣻⢏⡄⡧⢎⠶⡤⣀
 ⠈⢠⠀⠐⠀⠀⠀⠈⠀⠀⢀⢀⠀⠂⠀⠀⠀⠀⠀⠀⠄⡀⠂⡄⢈⠂⠆⣀⠑⠢⢄⡈⠘⠰⡡⢔⡉⠨⠑⠮⣙⡖⠀⣾⡵⣫⣰⠞⠠⢁
 ⡘⠀⡰⠀⢠⠀⠀⠀⠀⢀⢃⡀⢂⠀⠀⠀⡀⠄⡀⠣⡀⠂⢅⡀⠃⠔⡀⡐⢌⠂⡄⠘⠥⡒⠤⡑⠸⢍⡞⣰⣀⢃⠰⣻⣽⡟⠆⢂⠣⢤
@@ -35,6 +36,9 @@ function AsciiArt() {
 ⠀⠀⠀⠀⠀⢀⢹⠋⣍⢲⡆⠀⠀⠀⠀⠀⠈⠙⠁⠀⠀⠀⠀⠞⠀⠈⠛⠹⡬⢁⢮⡱⣞⣿⠀⠀⠀⠀⠀⠀⠀⠶⣶⠀⠀⠀⣤⣶⡇⠀
 ⠀⠀⠀⠀⠀⠰⣃⠞⣤⣛⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠎⡷⣹⣿⣿⠏⡀⠄⢐⠀⠀⠀⠀⠀⠀⠤⠀⠿⠿⠃⠰
 ⠀⠀⠀⠀⠀⠁⢂⠚⡔⠡⡇⠀⢰⣿⣶⡄⠀⠀⠀⠀⡔⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠤⡘⠋⢀⠀⠀⢢⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+    </div>
+    <div className="font-family: monospace; white-space: pre;">
+    </div>
     </div>
   )
 }
