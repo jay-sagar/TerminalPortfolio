@@ -68,10 +68,9 @@ function App() {
   }, [history]);
 
   return (
-    <div className="bg-[#211d1b] font-mono min-h-screen">
+    <div className="bg-[#211d1b] font-mono h-screen overflow-y-auto" ref={containerRef}>
       <div 
-        ref={containerRef}
-        className="mx-6 pt-6 h-screen overflow-y-auto"
+        className="mx-6 pt-6"
       >
         <div className="text-[#DCDCCC]">
           <div>Jay Sagar Terminal [Version 1.2.1]</div>
