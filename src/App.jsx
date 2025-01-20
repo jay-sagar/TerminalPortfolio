@@ -58,7 +58,7 @@ function App() {
           <div>
             <ul className="mx-5 my-4 text-white">
               {display.map((value, index) => {
-                return <li key={index}>{value}</li>;
+                return <li key={index} className="whitespace-pre">{value}</li>;
               })}
             </ul>
           </div>
