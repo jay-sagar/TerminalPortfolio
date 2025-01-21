@@ -17,12 +17,15 @@ import {
 function App() {
   const [history, setHistory] = useState([]);
   const [banner, setBanner] = useState(true);
+  const [commandHistory, setCommandHistory] = useState([]);
+  const [commandIndex, setCommandIndex] = useState(-1);
   const containerRef = useRef(null);
   const inputRef = useRef(null);
 
   const handleSubmit = (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
+      setCommandIndex(-1);
       const command = e.target.value.trim();
       let output = [];
 
@@ -57,7 +60,7 @@ function App() {
           }, 1000);
           output = email;
           break;
-        
+
         case "linkedin":
           setTimeout(() => {
             window.open("https://www.linkedin.com/in/jaysagar", "_blank");
@@ -78,7 +81,7 @@ function App() {
           }, 1000);
           output = youtube;
           break;
-          
+
         case "github":
           setTimeout(() => {
             window.open("https://www.github.com/jay-sagar", "_blank");
@@ -92,6 +95,10 @@ function App() {
           setBanner(false);
           return;
 
+        case "history":
+          output = commandHistory;
+          break;
+
         default:
           output = invalidCmd;
           break;
@@ -101,7 +108,26 @@ function App() {
         ...prevValue,
         { command: command, output: output },
       ]);
+      setCommandHistory((prevValue) => [...prevValue, command]);
       e.target.value = "";
+    
+    } else if (e.key === "ArrowUp") {
+      if (commandIndex < commandHistory.length - 1) {
+        const newIndex = commandIndex + 1;
+        setCommandIndex(newIndex);
+        inputRef.current.value =
+          commandHistory[commandHistory.length - 1 - newIndex];
+      }
+    } else if (e.key === "ArrowDown") {
+      if (commandIndex > 0) {
+        const newIndex = commandIndex - 1;
+        setCommandIndex(newIndex);
+        inputRef.current.value =
+          commandHistory[commandHistory.length - 1 - newIndex];
+      } else if (commandIndex === 0) {
+        setCommandIndex(-1);
+        inputRef.current.value = "";
+      }
     }
   };
 
@@ -121,7 +147,7 @@ function App() {
         {banner ? (
           <div>
             <div className="text-[#DCDCCC]">
-              <div>Jay Sagar Terminal [Version 1.2.1]</div>
+              <div>Jay Sagar Terminal [Version 1.3.1]</div>
               <div>(c) Jay Sagar Portfolio. All rights reserved.</div>
             </div>
             <AsciiArt />
@@ -149,7 +175,6 @@ function App() {
           ))}
         </div>
 
-        {/* Input line */}
         <div className="mt-2">
           <label htmlFor="cmd" className="text-lime-500">
             dev@jaysagar:~$

@@ -3,6 +3,7 @@ const help = [
   "skills      Check out my technical skills",
   "projects    View my projects",
   "social      Display social networks",
+  "history     View command history",
   "clear       Clear my terminal",
   "banner      Display the banner",
 ];
