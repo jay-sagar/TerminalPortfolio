@@ -4,6 +4,7 @@ const help = [
   "projects    View my projects",
   "social      Display social networks",
   "clear       Clear my terminal",
+  "banner      Display the banner",
 ];
 
 const whoAreYou = [
