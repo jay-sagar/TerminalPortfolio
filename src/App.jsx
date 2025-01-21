@@ -1,31 +1,24 @@
 import { useEffect, useRef, useState } from "react";
-import AsciiArt from './components/AsciiArt';
+import AsciiArt from "./components/AsciiArt";
+import {
+  help,
+  whoAreYou,
+  social,
+  invalidCmd,
+  skills,
+  projects,
+  email,
+  github,
+  linkedIn,
+  instagram,
+  youtube,
+} from "./components/Information";
 
 function App() {
   const [history, setHistory] = useState([]);
+  const [banner, setBanner] = useState(true);
   const containerRef = useRef(null);
   const inputRef = useRef(null);
-
-  const help = [
-    "about       Learn about me",
-    "skills      Check out my technical skills",
-    "projects    View my projects",
-    "contact     Get my contact details",
-    "clear       Clear my terminal",
-  ];
-
-  const whoAreYou = [
-    "Hey 👋, My name is Jay Sagar who loves building cool stuff with the MERN stack and Spring Boot.",
-    "My go-to languages are Java, JavaScript, TypeScript, C++, and SQL.",
-    "I focus on creating scalable applications, have a solid understanding of low-level design (LLD), and am pretty good at data structures and algorithms.",
-    "When I'm not coding, I enjoy studying Japanese as a hobby and loves to play competitive games like Counter-Strike, Apex Legends and Tekken. 🎮",
-  ];
-
-  const social = [];
-
-  const invalidCmd = [
-    "Invalid Command! Type 'help' to see the available commands.",
-  ];
 
   const handleSubmit = (e) => {
     if (e.key === "Enter") {
@@ -42,9 +35,61 @@ function App() {
           output = whoAreYou;
           break;
 
+        case "skills":
+          output = skills;
+          break;
+
+        case "social":
+          output = social;
+          break;
+
+        case "projects":
+          output = projects;
+          break;
+
+        case "banner":
+          setBanner(true);
+          break;
+
+        case "email":
+          setTimeout(() => {
+            window.open("mailto:jaysagar871@gmail.com", "_blank");
+          }, 1000);
+          output = email;
+          break;
+        
+        case "linkedin":
+          setTimeout(() => {
+            window.open("https://www.linkedin.com/in/jaysagar", "_blank");
+          }, 1000);
+          output = linkedIn;
+          break;
+
+        case "instagram":
+          setTimeout(() => {
+            window.open("https://www.instagram.com/p1ayjay", "_blank");
+          }, 1000);
+          output = instagram;
+          break;
+
+        case "youtube":
+          setTimeout(() => {
+            window.open("https://www.youtube.com/@p1ayj4y", "_blank");
+          }, 1000);
+          output = youtube;
+          break;
+          
+        case "github":
+          setTimeout(() => {
+            window.open("https://www.github.com/jay-sagar", "_blank");
+          }, 1000);
+          output = github;
+          break;
+
         case "clear":
           setHistory([]);
           e.target.value = "";
+          setBanner(false);
           return;
 
         default:
@@ -68,22 +113,27 @@ function App() {
   }, [history]);
 
   return (
-    <div className="bg-[#211d1b] font-mono h-screen overflow-y-auto" ref={containerRef}>
-      <div 
-        className="mx-6 pt-6"
-      >
-        <div className="text-[#DCDCCC]">
-          <div>Jay Sagar Terminal [Version 1.2.1]</div>
-          <div>(c) Jay Sagar Portfolio. All rights reserved.</div>
-        </div>
-        <AsciiArt />
-        <div className="text-green-500 mt-4">
-          <div>Welcome to the terminal interface.</div>
+    <div
+      className="bg-[#211d1b] font-mono h-screen overflow-y-auto"
+      ref={containerRef}
+    >
+      <div className={banner ? "mx-6 pt-6" : "mx-6"}>
+        {banner ? (
           <div>
-            Use <span className="text-white">'help'</span> to see the list of
-            available commands.
+            <div className="text-[#DCDCCC]">
+              <div>Jay Sagar Terminal [Version 1.2.1]</div>
+              <div>(c) Jay Sagar Portfolio. All rights reserved.</div>
+            </div>
+            <AsciiArt />
+            <div className="text-green-500 mt-4">
+              <div>Welcome to the terminal interface.</div>
+              <div>
+                Use <span className="text-white">'help'</span> to see the list
+                of available commands.
+              </div>
+            </div>
           </div>
-        </div>
+        ) : null}
 
         <div className="mt-4">
           {history.map((entry, index) => (
